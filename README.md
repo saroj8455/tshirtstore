@@ -158,3 +158,5 @@ footer {
   </div>
 </div>
 ```
+
+### Mobile number validation https://www.aspsnippets.com/Articles/3741/Indian-Mobile-Number-validation-using-Regular-Expressions-in-AngularJS/

@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit {
 
   selectedCities!: City[];
 
+  inputMobile = '';
+
   ngOnInit(): void {
     this.loadTemplate();
   }

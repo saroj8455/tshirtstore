@@ -2,6 +2,7 @@
   <p>home works!</p>
 
   <div class="p-fluid grid py-4">
+    <!-- form container -->
     <div class="field col-12 md:col-4">
       <span class="p-float-label">
         <p-dropdown
@@ -25,5 +26,17 @@
         <label for="float-label">Select Variables</label>
       </span>
     </div>
+    <div class="field col-12 md:col-4">
+      <span class="p-float-label">
+        <input
+          pInputText
+          id="mobile"
+          pattern="^(0|91)?[6-9][0-9]{9}$"
+          [(ngModel)]="inputMobile"
+        />
+        <label htmlFor="mobile">Mobile/Whatsapp Number</label>
+      </span>
+    </div>
+    <!-- form container -->
   </div>
 </div>

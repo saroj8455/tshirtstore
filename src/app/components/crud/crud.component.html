@@ -1,0 +1,220 @@
+<div class="card flex m-6 justify-content-end">
+  <i class="pi pi-bell text-3xl" pBadge [value]="ticketCount.toString()"></i>
+</div>
+<div class="p-fluid grid m-4">
+  <div class="field col-12 md:col-6">
+    <span class="p-float-label">
+      <input type="text" id="inputtext" pInputText [(ngModel)]="ticket.title" />
+      <label for="inputtext">Title</label>
+    </span>
+  </div>
+  <div class="field col-12 md:col-6">
+    <span class="p-float-label">
+      <input
+        type="text"
+        id="inputtext-left"
+        pInputText
+        [(ngModel)]="ticket.category"
+      />
+      <label for="inputtext-left">Category</label>
+    </span>
+  </div>
+</div>
+<div class="p-fluid grid m-4">
+  <div class="field col-12">
+    <span class="p-float-label">
+      <div class="card">
+        <p-editor
+          [(ngModel)]="ticket.description"
+          [style]="{ height: '320px' }"
+        ></p-editor>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="card flex align-items-center justify-content-center gap-4">
+  <span class="p-buttonset">
+    <button
+      pButton
+      pRipple
+      (click)="createTicket()"
+      label="Create Ticket"
+      icon="pi pi-check"
+    ></button>
+    <button pButton pRipple label="Delete" icon="pi pi-trash"></button>
+    <button pButton pRipple label="Cancel" icon="pi pi-times"></button>
+  </span>
+</div>
+
+<div class="p-fluid grid m-4">
+  <!-- <div class="field col-12 md:col-2"></div> -->
+  <div class="field col-12">
+    <div class="card">
+      <p-table
+        [value]="ticketsArray"
+        [paginator]="true"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [rowsPerPageOptions]="[5, 10, 25, 50]"
+        [tableStyle]="{ 'min-width': '50rem' }"
+      >
+        <ng-template pTemplate="caption">
+          <div class="flex align-items-center justify-content-between">
+            Tickets System_V1
+            <p-button icon="pi pi-refresh"></p-button>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Action</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Description</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-ticket>
+          <tr>
+            <td>
+              <div class="card flex gap-2">
+                <button
+                  pButton
+                  pRipple
+                  (click)="editTicket(ticket)"
+                  icon="pi pi-pencil"
+                  class="p-button-rounded p-button-success mr-2"
+                ></button>
+                <button
+                  pButton
+                  pRipple
+                  (click)="deleteTicket(ticket)"
+                  icon="pi pi-trash"
+                  class="p-button-rounded p-button-warning"
+                ></button>
+              </div>
+            </td>
+            <td>{{ ticket.title }}</td>
+            <td>{{ ticket.category }}</td>
+            <td>
+              <div class="card" [innerHTML]="ticket.description"></div>
+            </td>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+          <div class="flex align-items-center justify-content-between">
+            In total there are
+            {{ ticketsArray ? ticketsArray.length : 0 }} tickets.
+          </div>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+</div>
+
+<p-dialog header="Header" [(visible)]="visible" [style]="{ minWidth: '90dvw' }">
+  <div class="p-fluid grid m-4">
+    <div class="field col-12 md:col-6">
+      <span class="p-float-label">
+        <input
+          type="text"
+          id="inputtext"
+          pInputText
+          [(ngModel)]="ticket.title"
+        />
+        <label for="inputtext">Title</label>
+      </span>
+    </div>
+    <div class="field col-12 md:col-6">
+      <span class="p-float-label">
+        <input
+          type="text"
+          id="inputtext-left"
+          pInputText
+          [(ngModel)]="ticket.category"
+        />
+        <label for="inputtext-left">Category</label>
+      </span>
+    </div>
+  </div>
+  <div class="p-fluid grid m-4">
+    <div class="field col-12 md:col-6">
+      <h3>Upload to Local SRV</h3>
+      <span class="p-float-label">
+        <div class="card flex">
+          <p-toast></p-toast>
+          <!-- url="https://www.primefaces.org/cdn/api/upload.php" -->
+          <!-- https://jsdevblog.in/dev/welcome/captureimage -->
+          <p-fileUpload
+            name="captureImage"
+            url="http://localhost:3002/api/tickets/upload?Id=6560a756be6f8a636ce47347"
+            (onUpload)="onUpload($event)"
+            [multiple]="false"
+            accept="image/*"
+            [maxFileSize]="5000000"
+          >
+            <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">
+                  {{ file.name }} - {{ file.size }} bytes
+                </li>
+              </ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+      </span>
+    </div>
+    <div class="field col-12 md:col-6">
+      <h3>Upload to Remote SRV</h3>
+      <span class="p-float-label">
+        <div class="card flex">
+          <p-toast></p-toast>
+          <!-- url="https://www.primefaces.org/cdn/api/upload.php" -->
+          <!-- https://jsdevblog.in/dev/welcome/captureimage -->
+          <p-fileUpload
+            name="profile_image"
+            url="https://jsdevblog.in/dev/welcome/captureimage"
+            (onUpload)="onUpload($event)"
+            [multiple]="false"
+            accept="image/*"
+            [maxFileSize]="5000000"
+          >
+            <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">
+                  {{ file.name }} - {{ file.size }} bytes
+                </li>
+              </ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+      </span>
+    </div>
+  </div>
+  <div class="p-fluid grid m-4">
+    <div class="field col-12">
+      <span class="p-float-label">
+        <div class="card">
+          <p-editor
+            [(ngModel)]="ticket.description"
+            [style]="{ height: '320px' }"
+          ></p-editor>
+        </div>
+      </span>
+    </div>
+  </div>
+
+  <div class="card flex align-items-center justify-content-center gap-4">
+    <span class="p-buttonset">
+      <button
+        pButton
+        pRipple
+        (click)="updateTicket()"
+        label="Update Ticket"
+        icon="pi pi-check"
+      ></button>
+      <button pButton pRipple label="Delete" icon="pi pi-trash"></button>
+      <button pButton pRipple label="Cancel" icon="pi pi-times"></button>
+    </span>
+  </div>
+</p-dialog>

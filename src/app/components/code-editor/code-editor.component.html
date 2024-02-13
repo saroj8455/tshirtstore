@@ -1,0 +1,78 @@
+<p-tabMenu [model]="items" [activeItem]="activeItem"></p-tabMenu>
+<div class="card mt-4 ">
+  <h1 class="mb-2 ">Code Editor</h1>
+  <p-editor [(ngModel)]="text" [style]="{'height':'320px'}"></p-editor>
+</div>
+
+<div class="card my-2">
+  <div [innerHTML]="text"></div>
+</div>
+
+<div class="card">
+  <h5 class="text-center ">Vertical with Content</h5>
+  <div class="grid">
+    <div class="col-5 flex align-items-center justify-content-center">
+      <div class="p-fluid">
+        <div class="field">
+          <label for="username">Username</label>
+          <input pInputText id="username" type="text" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input pInputText id="password" type="password" />
+        </div>
+        <p-button label="Login"></p-button>
+      </div>
+    </div>
+    <div class="col-2">
+      <p-divider layout="vertical">
+        <b>OR</b>
+      </p-divider>
+    </div>
+    <div class="col-5 flex align-items-center justify-content-center">
+      <p-button label="Sign Up" icon="pi pi-user-plus" styleClass="p-button-success"></p-button>
+    </div>
+  </div>
+</div>
+
+<div class="card mx-2 ">
+  <h5 class="text-center ">Vertical Column Content</h5>
+  <div class="flex">
+    <p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+      ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+      esse cillum dolore eu fugiat nulla pariatur.
+      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    <p-divider layout="vertical"></p-divider>
+
+    <p class="text-justify">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+      laudantium, totam rem
+      aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+      architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut
+      fugit, sed quia consequuntur magni dolores eos qui ratione
+      voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
+
+    <p-divider layout="vertical"></p-divider>
+
+    <p class="text-justify">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+      voluptatum deleniti atque
+      corrupti quos dolores et quas molestias excepturi sint occaecati
+      cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+      fuga. Et harum quidem rerum facilis est et expedita distinctio.
+      Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+  </div>
+</div>
+
+<div class="card py-2">
+  <p-fileUpload name="myfile[]" [customUpload]="true" (uploadHandler)="myUploader($event)"></p-fileUpload>
+</div>
+
+<div class="card py-4 ">
+  <p-toast></p-toast>
+  <p-steps [model]="personlItem" [readonly]="true"></p-steps>
+</div>
+<div class="card py-3">
+  <router-outlet></router-outlet>
+</div>

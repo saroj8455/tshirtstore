@@ -139,3 +139,22 @@ footer {
   padding: 2rem 0;
 }
 ```
+
+## Prime Flex Configure Responsive Form Layout
+
+```html
+<div class="p-fluid grid py-4">
+  <div class="field col-12 md:col-4">
+    <span class="p-float-label">
+      <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select Functions" optionLabel="name" inputId="float-label"></p-dropdown>
+      <label for="float-label">Select Functions</label>
+    </span>
+  </div>
+  <div class="field col-12 md:col-4">
+    <span class="p-float-label">
+      <p-multiSelect inputId="float-label" [options]="cities" [(ngModel)]="selectedCities" optionLabel="name"></p-multiSelect>
+      <label for="float-label">Select Variables</label>
+    </span>
+  </div>
+</div>
+```

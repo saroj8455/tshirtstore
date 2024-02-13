@@ -18,6 +18,10 @@ export class HomeComponent implements OnInit {
 
   inputMobile = '';
 
+  visible: boolean = false;
+
+  position: any = 'center';
+
   ngOnInit(): void {
     this.loadTemplate();
   }
@@ -31,5 +35,17 @@ export class HomeComponent implements OnInit {
       { name: 'Istanbul', code: 'IST' },
       { name: 'Paris', code: 'PRS' },
     ];
+  }
+
+  showDialog(position: string) {
+    const mobilePattern = new RegExp('^(0|91)?[6-9][0-9]{9}$');
+    if (this.inputMobile && !mobilePattern.test(this.inputMobile)) {
+      this.visible = true;
+      this.position = position;
+      // alert(`Invalid Mobile Number`);
+      return;
+    }
+
+    // this.visible = true;
   }
 }

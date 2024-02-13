@@ -37,6 +37,28 @@
         <label htmlFor="mobile">Mobile/Whatsapp Number</label>
       </span>
     </div>
+    <div class="field col-12">
+      <div class="card">
+        <p-button
+          (click)="showDialog('top')"
+          icon="pi pi-arrow-down"
+          label="Top"
+          styleClass=" w-2 p-button-warning"
+        ></p-button>
+      </div>
+    </div>
     <!-- form container -->
   </div>
 </div>
+
+<p-dialog
+  header="Invalid mobile number"
+  [(visible)]="visible"
+  [position]="position"
+  [style]="{ width: '50vw' }"
+>
+  <p class="text-500">
+    Please enter a valid Indian mobile or WhatsApp number. The format should be
+    like 9876543210.
+  </p>
+</p-dialog>

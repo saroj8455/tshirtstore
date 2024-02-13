@@ -1,0 +1,5 @@
+.v__underline {
+  text-decoration: underline overline;
+  letter-spacing: 0.5ch;
+  margin: 1.5rem 0;
+}

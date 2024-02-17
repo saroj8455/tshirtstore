@@ -1,4 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
+import { IProductResponse, Product } from 'src/app/common/tshirt.model';
+import { TshirtsService } from 'src/app/service/tshirts.service';
 
 interface City {
   name: string;
@@ -22,8 +26,17 @@ export class HomeComponent implements OnInit {
 
   position: any = 'center';
 
+  products: Product[] = [];
+  isReadMore: boolean = true;
+
+  constructor(private _http: HttpClient, private tshirt: TshirtsService) {}
+
   ngOnInit(): void {
     this.loadTemplate();
+
+    this.tshirt.getProducts().subscribe((productsresp) => {
+      this.products = productsresp;
+    });
   }
 
   // initial config
@@ -37,6 +50,17 @@ export class HomeComponent implements OnInit {
     ];
   }
 
+  // customizeResp() {
+  //   return this._http
+  //     .get<IProductResponse>('https://dummyjson.com/products')
+  //     .pipe(
+  //       map((resp) => {
+  //         console.log(resp.products);
+  //         return resp.products as Product[];
+  //       })
+  //     );
+  // }
+
   showDialog(position: string) {
     const mobilePattern = new RegExp('^(0|91)?[6-9][0-9]{9}$');
     if (this.inputMobile && !mobilePattern.test(this.inputMobile)) {
@@ -47,5 +71,9 @@ export class HomeComponent implements OnInit {
     }
 
     // this.visible = true;
+  }
+
+  showText() {
+    this.isReadMore = !this.isReadMore;
   }
 }

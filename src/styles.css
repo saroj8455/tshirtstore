@@ -111,3 +111,7 @@ footer {
   width: 100%;
   padding: 2rem 0;
 }
+
+.p-card-title {
+  font-size: var(--fs-200);
+}

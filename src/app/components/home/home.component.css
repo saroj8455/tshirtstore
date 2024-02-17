@@ -1,0 +1,21 @@
+.product__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 80%), 1fr));
+  gap: 1rem;
+}
+
+.product__img {
+  display: flex;
+  justify-content: center;
+}
+
+.product__img > img {
+  max-width: 50%;
+  object-fit: contain;
+  aspect-ratio: 2/3;
+}
+
+.limitTextHeight {
+  height: 20px;
+  overflow: hidden;
+}

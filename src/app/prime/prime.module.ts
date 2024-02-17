@@ -31,7 +31,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { RatingModule } from 'primeng/rating';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
+import { CardModule } from 'primeng/card';
 @NgModule({
   declarations: [],
   imports: [CommonModule],
@@ -67,6 +67,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     RatingModule,
     RadioButtonModule,
     ConfirmDialogModule,
+    CardModule,
   ],
 })
 export class PrimeModule {}

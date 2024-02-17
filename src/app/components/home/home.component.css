@@ -21,3 +21,19 @@
   height: 20px;
   overflow: hidden;
 }
+
+.small__image > img {
+  max-width: 100%;
+  object-fit: contain;
+  aspect-ratio: 16/9;
+  opacity: 0.6;
+}
+.large__image > img {
+  max-width: 100%;
+}
+
+.small__image > img:hover {
+  cursor: pointer;
+  opacity: 1;
+  transition: 0.3ms linear 0.15ms;
+}

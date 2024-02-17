@@ -29,6 +29,15 @@ export class HomeComponent implements OnInit {
   products: Product[] = [];
   isReadMore: boolean = true;
 
+  thumbnail = 'https://cdn.dummyjson.com/product-images/1/thumbnail.jpg';
+  images = [
+    'https://cdn.dummyjson.com/product-images/1/1.jpg',
+    'https://cdn.dummyjson.com/product-images/1/2.jpg',
+    'https://cdn.dummyjson.com/product-images/1/3.jpg',
+    'https://cdn.dummyjson.com/product-images/1/4.jpg',
+    'https://cdn.dummyjson.com/product-images/1/thumbnail.jpg',
+  ];
+
   constructor(private _http: HttpClient, private tshirt: TshirtsService) {}
 
   ngOnInit(): void {
@@ -75,5 +84,9 @@ export class HomeComponent implements OnInit {
 
   showText() {
     this.isReadMore = !this.isReadMore;
+  }
+
+  changeSourceImage(image: string) {
+    this.thumbnail = image;
   }
 }

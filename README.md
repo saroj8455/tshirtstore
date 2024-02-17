@@ -160,3 +160,16 @@ footer {
 ```
 
 ### Mobile number validation https://www.aspsnippets.com/Articles/3741/Indian-Mobile-Number-validation-using-Regular-Expressions-in-AngularJS/
+
+### product image gallery with details in flex
+
+```html
+<div class="p-3 flex gap-2 justify-content-center align-items-center">
+  <div class="small__image flex flex-column gap-4">
+    <img [src]="image" (click)="changeSourceImage(image)" alt="" srcset="" *ngFor="let image of images" />
+  </div>
+  <div class="large__image flex-none">
+    <img [src]="thumbnail" alt="" srcset="" />
+  </div>
+</div>
+```

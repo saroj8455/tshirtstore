@@ -57,8 +57,8 @@
       Product image gallery with details
     </h3>
     <div class="grid align-items-center">
-      <div class="col-12 md:col-6">
-        <div class="p-3 flex gap-2 justify-content-center align-items-center">
+      <div class="col-12 md:col-6 px-4">
+        <div class="p-3 flex gap-2">
           <div class="small__image flex flex-column gap-4">
             <img
               [src]="image"
@@ -69,11 +69,11 @@
             />
           </div>
           <div class="large__image flex-none">
-            <img [src]="thumbnail" alt="" srcset="" />
+            <img [src]="thumbnail" class="h-full" alt="" srcset="" />
           </div>
         </div>
       </div>
-      <div class="col-12 md:col-6">
+      <div class="col-12 md:col-6 px-4">
         <div class="card py-6">
           <p class="p-2">
             Supported formats include HEVC and H.264 HDR with Dolby Vision,
@@ -89,7 +89,7 @@
             computer system or power adapter Fast-charge capable: Up to 50%
             charge in 30 minutes10 with 20W adapter or higher (sold separately)
           </p>
-          <div class="flex gap-4 pt-2">
+          <div class="flex gap-4 justify-content-center pt-2">
             <p-button label="Save" icon="pi pi-check"></p-button>
             <p-button
               label="Cancel"

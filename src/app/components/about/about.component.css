@@ -1,0 +1,27 @@
+.card__container {
+  border: 2px solid gray;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: aquamarine;
+  width: min(100%, 360px);
+  /* width: 400px; */
+}
+
+.max__card__container {
+  border: 0.2rem solid cyan;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: aquamarine;
+  width: max(50%, 90%) !important;
+}
+
+.clamp__text > p {
+  text-align: justify;
+  padding: 1rem;
+  line-height: 1.6;
+  border: 0.2rem solid cyan;
+  background-color: lightcoral;
+  border-radius: 0.4rem;
+  /* width: clamp(45ch, 10%, 75ch); */
+  width: min(360px, 100%);
+}

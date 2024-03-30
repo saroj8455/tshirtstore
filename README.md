@@ -173,3 +173,7 @@ footer {
   </div>
 </div>
 ```
+
+### responsive width
+
+`https://web.dev/articles/min-max-clamp`

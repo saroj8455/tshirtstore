@@ -7,6 +7,7 @@ import { GridComponent } from './components/grid/grid.component';
 import { CodeEditorComponent } from './components/code-editor/code-editor.component';
 import { CrudComponent } from './components/crud/crud.component';
 import { ProductsComponent } from './components/products/products.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'editor', component: CodeEditorComponent },
   { path: 'crud', component: CrudComponent },
   { path: 'products', component: ProductsComponent },
+  { path: 'about', component: AboutComponent },
   { path: '**', component: ErrorPageComponent },
 ];
 
